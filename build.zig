@@ -94,7 +94,7 @@ pub fn build(b: *std.Build) !void {
 
     lib.addCSourceFiles(.{ .files = srcs, .flags = flags.items });
     lib.installHeader(std.Build.LazyPath{.path = "override/include/libxml/xmlversion.h"}, "libxml/xmlversion.h");
-    lib.installHeadersDirectory(std.Build.LazyPath{.path = "upstream/include/libxml"}, "libxml");
+    lib.installHeadersDirectory(std.Build.LazyPath{.path = "upstream/include/libxml"}, "libxml", .{} );
 
     b.installArtifact(lib);
 }
