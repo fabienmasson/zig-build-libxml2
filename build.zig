@@ -40,7 +40,7 @@ pub fn build(b: *std.Build) !void {
         "-DLIBXML_AUTOMATA_ENABLED=1",
         "-DWITHOUT_TRIO=1",
     });
-    if (!target.isWindows()) {
+    if (target.query.os_tag != std.Target.Os.Tag.windows) {
         try flags.appendSlice(&.{
             "-DHAVE_ARPA_INET_H=1",
             "-DHAVE_ARPA_NAMESER_H=1",
