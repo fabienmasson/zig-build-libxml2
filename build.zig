@@ -13,7 +13,7 @@ pub fn build(b: *std.Build) !void {
 
     lib.addIncludePath(.{ .path = "upstream/include" });
     lib.addIncludePath(.{ .path = "override/include" });
-    if (target.isWindows()) {
+    if (target.query.os_tag == std.Target.Os.Tag.windows) {
         lib.addIncludePath(.{ .path = "override/config/win32" });
         lib.linkSystemLibrary("ws2_32");
     } else {
